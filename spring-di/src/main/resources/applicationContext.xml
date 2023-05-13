@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean name="person" class="com.example.spring_di.Person">
+<property name="firstName" value="Alok"></property>
+<property name="lastName" value="Mishra"></property>
+<property name="age" value="23"></property>
+</bean>
+<bean name="fortuneservice" class="com.example.spring_di.HappyFortuneService">
+
+</bean>
+<bean name="coach" class="com.example.spring_di.CricketCoach">
+<property name="fortuneservice" ref="fortuneservice"></property>
+</bean>
+</beans>
