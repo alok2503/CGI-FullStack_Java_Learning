@@ -1,0 +1,3 @@
+com\cgi\demo\controller\StudentController.class
+com\cgi\demo\model\Student.class
+com\cgi\demo\controller\HomeController.class
