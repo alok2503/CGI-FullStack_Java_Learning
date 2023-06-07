@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dto.UserDto;
 import com.example.demo.entity.UserEntity;
 import com.example.demo.repo.UserRepository;
+import com.example.demo.ui.UserRequestModel;
 import com.example.demo.ui.UserResponseModel;
 
 import lombok.AllArgsConstructor;
@@ -66,14 +67,14 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UserResponseModel updateUserById(int id) {
+	public UserResponseModel updateUserById(int id,UserRequestModel request) {
 		// TODO Auto-generated method stub
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 		UserEntity userEntity = userRepository.getById(id);
 		if(userEntity==null) {
 			return null;
 		}else {
-			userEntity.setFirstName("alok");
+			userEntity.setFirstName(request.getFirstName());
 			UserResponseModel responseModel= modelMapper.map(userEntity, UserResponseModel.class);
 			return responseModel;	
 		}
@@ -90,6 +91,15 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 		UserEntity entity = userRepository.findByUserId(userId);
+		UserResponseModel response = modelMapper.map(entity, UserResponseModel.class);
+		return response;
+	}
+
+	@Override
+	public UserResponseModel findByEmail(String email) {
+		// TODO Auto-generated method stub
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+		UserEntity entity = userRepository.findByEmail(email);
 		UserResponseModel response = modelMapper.map(entity, UserResponseModel.class);
 		return response;
 	}

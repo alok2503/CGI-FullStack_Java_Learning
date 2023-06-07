@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.demo.dto.UserDto;
 import com.example.demo.entity.UserEntity;
+import com.example.demo.ui.UserRequestModel;
 import com.example.demo.ui.UserResponseModel;
 
 public interface UserService {
@@ -12,11 +13,13 @@ public interface UserService {
 
 	public List<UserEntity> getAllUsers();
 	
-	public UserResponseModel getuserById(String userId);
+	public UserResponseModel getuserById(int id);
 	
 	public void deleteUserById(int id);
 	
-	public UserResponseModel updateUserById(int id);
+	public UserResponseModel updateUserById(int id,UserRequestModel request);
+	
+	public UserResponseModel findByEmail(String email);
 	
 	public void deleteAllUsers();
 	

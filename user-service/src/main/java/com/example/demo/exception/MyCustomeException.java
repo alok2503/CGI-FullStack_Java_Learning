@@ -1,5 +1,16 @@
 package com.example.demo.exception;
 
-public class MyCustomeException {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class MyCustomeException extends RuntimeException {
+
+	public String message;
 
 }
